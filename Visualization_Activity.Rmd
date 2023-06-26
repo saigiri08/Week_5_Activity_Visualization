@@ -1,0 +1,35 @@
+---
+title: "Visualization Activity"
+author: "Sainath"
+date: "2023-06-25"
+output: html_document
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r visualization, echo=TRUE}
+cran_mirror <- "https://cran.r-project.org"
+
+options(repos = cran_mirror)
+
+install.packages("knitr")
+install.packages("ggplot2")
+library(ggplot2)
+
+Alcohol_Consumption_Dataset <- read.csv("C:/Users/91738/Downloads/drinks.csv")
+
+output1_scatter <- ggplot(Alcohol_Consumption_Dataset , aes(x = country , y = spirit_servings))+
+  geom_point(colour = 3)+
+  labs(title = "Spirit serving in litres per hour in each country" , x = "Name of the country" , y= "Spirit served per hour")
+
+output1_scatter
+
+output2_histogram <- ggplot(Alcohol_Consumption_Dataset , aes(x = total_litres_of_pure_alcohol)) + 
+  geom_histogram(colour = 3) +
+  labs(title = "Total litres of pure alcohol served",
+       x = "pure alcohol served in litres")
+
+output2_histogram
+```
